@@ -11,6 +11,10 @@ var gameRoutes = require('./routes/gameRoutes');
 var app = express();
 var router = express.Router ();
 
+mongoose.connect('mongodb://localhost/paranoiaPlayerdb');
+// mongoose.connect('mongodb://localhost/paranoiaGamedb');
+
+
 
 app.use(express.static('public'));
 

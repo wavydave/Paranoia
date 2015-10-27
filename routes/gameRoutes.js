@@ -8,30 +8,30 @@ router.route('/')
 
 /* GET All Blogs */
  .get(function(req, res) {
-   mongoose.model('Game').find({}, function(err, players){
+   mongoose.model('Game').find({}, function(err, game){
      if(err){
        return console.log(err);
      } else {
-      res.send(players)
+      res.send(game)
      }
    });
  })
 
  .post(function(req, res){
-   var handle = req.body.handle;
-   var email= req.body.email;
-   var password = req.body.password;
-   var status = req.body.status;
-   var target = req.body.target;
-   var deceased = req.body.deceased;
+ var name = req.body.name;
+ var moderator = req.body.moderator;
+ var start = req.body.start;
+ var end = req.body.end;
+ var arena = req.body.arena;
+ var prize = req.body.prize;
 
    mongoose.model('post').create({
-     handle: handle,
-     email: email,
-     password: password,
-     status: status,
-     target: target,
-     deceased: deceased
+   name: name,
+   moderator: moderator,
+   start: start,
+   end: end,
+   arena: arena,
+   prize: prize
    }, function(err, jam){
      if(err){
        res.send("houston we have a problem")

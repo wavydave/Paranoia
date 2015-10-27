@@ -5,11 +5,12 @@ var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }))
 
 //url/api/blogs
+// /api/playerRoutes/
 router.route('/')
 
 /* GET All Blogs */
  .get(function(req, res) {
-   mongoose.model('Game').find({}, function(err, players){
+   mongoose.model('Player').find({}, function(err, players){
      if(err){
        return console.log(err);
      } else {
@@ -17,6 +18,7 @@ router.route('/')
      }
    });
  })
+
 
  .post(function(req, res){
    var handle = req.body.handle;
@@ -26,28 +28,30 @@ router.route('/')
    var target = req.body.target;
    var deceased = req.body.deceased;
 
-   mongoose.model('post').create({
+   mongoose.model('Player').create({
      handle: handle,
      email: email,
      password: password,
      status: status,
      target: target,
      deceased: deceased
-   }, function(err, jam){
+   }, function(err, player){
      if(err){
        res.send("houston we have a problem")
      } else{
-       console.log("New Agent named " + jam + "created!");
+       console.log("New Agent named " + player + "created!");
        res.send(player);
        
      }
    });
  });
 
-//url/api/blogs/4353453634
+
  router.route('/:id')
+
+
    .get(function(req, res) {
-       mongoose.model('post').findById({
+       mongoose.model('Player').findById({
            _id: req.params.id
        }, function(err, player) {
            if (err)
@@ -57,25 +61,39 @@ router.route('/')
        });
    })
 
-   // update the bear with this id (accessed at PUT http://localhost:8080/api/bears/:id)
-   // .put(function(req, res) {
+   
+   .put(function(req, res) {
 
-   //     mongoose.model('Blog').findById({
-   //         _id: req.params.id
-   //     }, function(err, blog) {
-   //       blog.title = req.body.title;
-   //       blog.body = req.body.body;
-   //         if (err)
-   //             res.send(err);
+            var handle = req.body.handle;
+            var email= req.body.email;
+            var password = req.body.password;
+            var status = req.body.status;
+            var target = req.body.target;
+            var deceased = req.body.deceased;
 
-   //         blog.save();
-   //         res.json(blog)
-   //     });
-   // })
-   // delete the bear with this id (accessed at DELETE http://localhost:8080/api/blogs/:id)
+       mongoose.model('Player').findById({
+           _id: req.params.id
+       }, function(err, player) {
+            
+
+           if (err)
+               res.send(err);
+              
+            player.handle = handle;
+            player.email= email;
+            player.password = password;
+            player.status = status;
+            player.target = target;
+            player.deceased = deceased;
+
+           player.save();
+           res.json(player);
+       });
+   })
+   
 
    .delete(function(req, res) {
-       mongoose.model('post').remove({
+       mongoose.model('Player').remove({
            _id: req.params.id
        }, function(err, player) {
            if (err)
