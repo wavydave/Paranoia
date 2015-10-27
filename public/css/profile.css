@@ -1,0 +1,26 @@
+#profile {
+	margin: 75px;
+	border: 3px;
+}
+
+body{
+	background-color: #000033;
+
+	max-height:75px; 
+	max-width: 75px;
+}
+h1{
+	text-decoration: underline;
+	text-decoration: bold;
+	text-color:white;
+}
+div{
+	background-color:#330000;
+	text-color:white;
+	text-align:left;
+
+}
+#skull{
+	max-width:95px;
+	max-height:95px;
+}
