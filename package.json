@@ -1,0 +1,23 @@
+{
+    "name": "paranoia",
+    "version": "1.0.0",
+    "description": "A game of staggering degenceracy",
+    "author": "Davis Logan",
+    "main": "js/server.js",
+    "dependencies": {
+    "bcrypt-nodejs" : "latest",
+   "body-parser": "^1.14.1",
+   "connect-flash" : "^0.1.1",
+   "cookie-parser": "^1.4.0",
+   "ejs" : "^2.3.3",
+   "express" : "^4.13.3",
+   "express-session": "^1.11.3",
+   "method-override": "^2.3.5",
+   "mongo": "^0.1.0",
+   "mongoose" : "^4.1.11",
+   "morgan": "^1.6.1",
+   "passport" : "^0.3.0",
+   "passport-local" : "^1.0.0"
+    }
+
+}
