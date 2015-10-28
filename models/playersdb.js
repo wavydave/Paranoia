@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var bcrypt   = require('bcrypt-nodejs');
 
 var playerSchema = new mongoose.Schema({
     
@@ -10,6 +11,16 @@ var playerSchema = new mongoose.Schema({
         target: String
 
     
-})
+});
+
+// generating a hash
+playerSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// checking if password is valid
+playerSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.local.password);
+};
 
 module.exports = mongoose.model('Player', playerSchema);

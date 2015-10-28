@@ -28,31 +28,36 @@
 
 <div class="container center-bloc signUp">
 	<div class="signUp">
-		<form action="http://localhost:7000/api/playerRoutes" type="submit" method="POST" url="profile.html">
-			<h2>Sign Up</h2>
-			<label>Handle</label>
-			<input placeholder="Choose a handle" name="handle"/>
-			<label>Email</label>
-			<input placeholder="enter your email address" name ="email"/>
-			<label>Password</label>
-			<input placeholder="choose a password" name ="password"/>
-			<button class="btn btn-default btn-md" type="submit"></button>
+		<form action="/signup" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
 
-		</form>
+        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+    </form>
 	</div>
 
 </div>
 
 <div class="container-fluid signIn">
 	<div class="signIn">
-		<form type="submit" method="POST" url="SOMEHTING">
-			<h2>Sign In</h2>
-			<label>Email</label>
-			<input placeholder="your email"/>
-			<label>Password</label>
-			<input placeholder="choose a password">
-			<button type="submit"></button>
-		</form>
+		 <form action="/signup" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+    </form>
 </div>		
 </div>
 
