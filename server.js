@@ -19,13 +19,13 @@ var gameModel = require('./models/gamedb');
 var userModel = require('./models/user');
 var playerRoutes = require('./routes/playerRoutes');
 var gameRoutes = require('./routes/gameRoutes');
+var newRoutes = require('./routes/newRoutes');
 
 
 // mongoose.connect('mongodb://localhost/paranoiaPlayerdb');
 mongoose.connect('mongodb://localhost/paranoiaGamedb');
 
  // load routes & pass in app & fully configed passport
-
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs'); // set up ejs for templating
@@ -51,7 +51,7 @@ app.use('/api/playerRoutes', playerRoutes);
 
 app.use('/api/gameRoutes', gameRoutes);
 
-
+app.use('/api/players', newRoutes);
 
 
 app.listen(app.get('port'), function() {

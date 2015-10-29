@@ -33,7 +33,9 @@
 .banner {
 	color: red;
 	font-family: 'Cutive Mono';
-	background-color: #29293D;
+	/*background-color: #29293D;*/
+	background: linear-gradient(#29293D, gray);
+	/*text-shadow: 2px 2px #ff0000;*/
 	padding-left: 50px;
 }
 body {
