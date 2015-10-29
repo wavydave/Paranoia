@@ -1,6 +1,8 @@
+
+
 jQuery(document).ready(function($) {
     var id = 1;
-    $('#hello').terminal(function(command, term) {
+    $('#console').terminal(function(command, term) {
         if (command == 'help') {
             term.echo("available commands are rules, game, profile, login, signout");
         } else if (command == 'profile'){

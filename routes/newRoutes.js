@@ -5,7 +5,13 @@ var bodyParser = require('body-parser');
 var User = require('../models/user');
 router.use(bodyParser.urlencoded({ extended: true }))
 
+
+
 router.route('/')
+
+.get('/', function(req, res){
+    res.readFile('consolepage.html')
+})
 
     // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function(req, res) {
@@ -42,6 +48,7 @@ router.route('/:_id')
          if (err)
              res.send(err);
          res.json(user);
+         var myUser = user.email;
      });
  });
 
