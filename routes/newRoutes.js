@@ -9,18 +9,16 @@ router.use(bodyParser.urlencoded({ extended: true }))
 
 router.route('/')
 
-.get('/', function(req, res){
-    res.readFile('consolepage.html')
-})
+
 
     // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function(req, res) {
         
-        var user = new User();      // create a new instance of the Bear model
-        user.email = req.body.email;  // set the bears name (comes from the request)
+        var user = new User();      // create a new instance of the User model
+        user.email = req.body.email;  // set the users email (comes from the request)
     	user.password = req.body.password;
 
-        // save the bear and check for errors
+        // save the user and check for errors
         user.save(function(err) {
             if (err)
                 res.send(err);
@@ -48,7 +46,18 @@ router.route('/:_id')
          if (err)
              res.send(err);
          res.json(user);
-         var myUser = user.email;
+         
+     });
+ });
+
+ router.route('/user/:email')
+    
+ .get(function(req, res) {
+     User.findOne({'local.email': req.params.email}, function(err, user) {
+         if (err)
+             res.send(err);
+         res.json(user);
+         
      });
  });
 

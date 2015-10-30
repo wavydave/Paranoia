@@ -17,6 +17,9 @@ jQuery(document).ready(function($) {
             }, {
                 prompt: 'test> ',
                 name: 'test'});
+        } else if (command == 'rules') {
+            term.echo('Goal: How to play: Getting your target: Once the game begins, the moderator will email your target. You will receive a picture of the player, their name, and their handle. When you eliminate a player: Upon eliminating your target, the target should give you their badge number and the information about the target they were assigned. This person is now your target. As soon as possible, email the moderator so the leaderboard can be updated. When you are eliminated: Give your target Winner takes all:');
+        
         } else if (command == "js") {
             term.push(function(command, term) {
                 var result = window.eval(command);
@@ -26,57 +29,33 @@ jQuery(document).ready(function($) {
             }, {
                 name: 'js',
                 prompt: 'js> '});
-        } else if (command == 'mysql') {
-            term.push(function(command, term) {
-                term.pause();
-                $.jrpc("mysql-rpc-demo.php",
-                       "query",
-                       [command],
-                       function(data) {
-                           term.resume();
-                           if (data.error && data.error.message) {
-                               term.error(data.error.message);
-                           } else {
-                               if (typeof data.result == 'boolean') {
-                                   term.echo(data.result ? 'success' : 'fail');
-                               } else {
-                                   var len = data.result.length;
-                                   for(var i=0;i<len; ++i) {
-                                       term.echo(data.result[i].join(' | '));
-                                   }
-                               }
-                           }
-                       },
-                       function(xhr, status, error) {
-                           term.error('[AJAX] ' + status +
-                                      ' - Server reponse is: \n' +
-                                      xhr.responseText);
-                           term.resume();
-                       });
-            }, {
-                greetings: "This is example of using mysql from terminal\n\
-you are allowed to execute: select, insert, update and delete from/to table:\n\
-    table test(integer_value integer, varchar_value varchar(255))",
-                prompt: "mysql> "});
-        } else if (command == 'login') {
-          term.push(function(command, term){
-            if(command == 'zmwarren'){
-              term.echo('Success! Welcome home, agent.');
-            } else if (command == 'davy') {
-              term.echo('Get out of here, you obvious double agent!');
-            } else {
-              term.echo(command + " is not a valid username. Try again.");
-            }
-          }, {
-            prompt: 'ASSASSIN SIGNIN ',
-            name: 'ASSASSIN SIGNIN'
-          });
+        } else if (command == 'signup') {
+            console.log('Input email');
+
+} else if (command == 'login') {
+  term.push(function(email, term){
+    console.log(email);
+    jQuery.get("http://localhost:7000/api/players/user/" + email)
+    .done(function (data){
+        console.log(data)
+        if(data != null){
+            term.echo('Success! Welcome home, agent.');
         } else {
-            term.echo("unknow command " + command);
+            term.echo(command + " is not a valid username. Try again.");
         }
-    }, {
-        greetings: "Type login to access your account, agent.",
-        onBlur: function() {
+    }).fail(function(res){
+        term.echo(command + "Sorry. Our super-secret servers are currently down. As far as you know...");
+    });
+}, {
+    prompt: 'Assassin login: Enter your top-secret email address: ',
+    name: ''
+});
+} else {
+    term.echo("unknown command " + command);
+}
+}, {
+    greetings: "Type login to access your account, agent.",
+    onBlur: function() {
             // prevent loosing focus
             return false;
         }
