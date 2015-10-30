@@ -30,7 +30,24 @@ jQuery(document).ready(function($) {
                 name: 'js',
                 prompt: 'js> '});
         } else if (command == 'signup') {
-            console.log('Input email');
+            term.push(function(email, term){
+    console.log(email);
+    var data = {email: email,};
+    jQuery.post("http://localhost:7000/api/playerRoutes", data)
+    .done(function (data){
+        console.log(data)
+        if(data != null){
+            term.echo('Success! Welcome home, agent.');
+        } else {
+            term.echo(command + " You done fucked up!");
+        }
+    }).fail(function(res){
+        term.echo(command + "Sorry. Our super-secret servers are currently down. As far as you know...");
+    });
+}, {
+    prompt: 'Assassin login: Enter your top-secret email address: ',
+    name: ''
+});
 
 } else if (command == 'login') {
   term.push(function(email, term){

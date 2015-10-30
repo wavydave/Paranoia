@@ -2,8 +2,8 @@ body {
 	padding-top: 100px; 
 	padding-left: 50px; 
 	padding-bottom: 100px; 
-	/*background-color: #5B0088;*/
-	background-image: url('../images/creepy.jpg');
+	background-color: #5B0088;
+	/*background-image: url('../images/creepy.jpg');*/
 }
 
 .monitor {
@@ -92,7 +92,7 @@ ul{
 ul li a{
   text-decoration:none;
   color:#000;
-  background:#ffc;
+  background: #FFFF33;
   display:block;
   height:6em;
   width:6em;
