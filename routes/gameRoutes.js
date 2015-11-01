@@ -39,7 +39,7 @@ router.route('/')
      if(err){
        res.send("houston we have a problem")
      } else{
-       console.log("New Game " + game + "created!");
+       console.log("New Game " + game.name + " created!");
        res.send(game);
        
      }
