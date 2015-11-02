@@ -9,7 +9,6 @@ var gameSchema = new mongoose.Schema({
         end:String,
         arena: String,
         prize: String
-    
 })
 
 module.exports = mongoose.model('Game', gameSchema);

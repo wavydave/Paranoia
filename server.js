@@ -49,7 +49,7 @@ app.use('/api', router);
 
 app.use('/api/playerRoutes', playerRoutes);
 
-// app.use('/api/gameRoutes', gameRoutes);
+app.use('/api/gameRoutes', gameRoutes);
 
 // app.use('/api/players', newRoutes);
 
