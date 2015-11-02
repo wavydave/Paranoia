@@ -7,11 +7,7 @@ var userSchema = mongoose.Schema({
 
     local            : {
         email        : String,
-        password     : String,
-        handle       : String,
-        deceased     : String,
-        target       : String,
-        status       : String
+        password     : String
     },
 
 });
