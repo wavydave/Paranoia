@@ -25,6 +25,11 @@ module.exports = function(app, passport) {
             user : req.user
         });
     });
+    app.get('/gameProfile', isLoggedIn, function(req, res) {
+        res.render('gameProfile.ejs', {
+            user : req.user
+        });
+    });
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
         req.logout();

@@ -14,7 +14,7 @@ router.route('/')
      if(err){
        return console.log(err);
      } else {
-      res.redirect('/profile');
+      res.json(games);
      }
    });
  })
