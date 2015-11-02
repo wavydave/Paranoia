@@ -5,7 +5,8 @@ module.exports = function(app, passport) {
     // show the home page (will also have our login links)
 
     app.get('/', function(req, res) {
-        res.render('index.ejs');
+        // res.render('index.ejs');
+        res.render('index.ejs', { message: req.flash('loginMessage') });
     });
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
@@ -13,7 +14,17 @@ module.exports = function(app, passport) {
             user : req.user
         });
     });
-
+    // COMPLETE PROFILE SECTION =========================
+    app.get('/completeProfile', isLoggedIn, function(req, res) {
+        res.render('completeProfile.ejs', {
+            user : req.user
+        });
+    });
+    app.get('/createGame', isLoggedIn, function(req, res) {
+        res.render('createGame.ejs', {
+            user : req.user
+        });
+    });
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
         req.logout();
@@ -39,7 +50,7 @@ module.exports = function(app, passport) {
     });
 
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/profile', // redirect to the secure profile section
+        successRedirect : '/completeProfile', // redirect to the secure profile section
         failureRedirect : '/signup', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));

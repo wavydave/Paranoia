@@ -22,25 +22,24 @@ router.route('/')
 
  .post(function(req, res){
    var handle = req.body.handle;
-   var email= req.body.email;
-   var password = req.body.password;
+  
    var status = req.body.status;
    var target = req.body.target;
    var deceased = req.body.deceased;
 
    mongoose.model('Player').create({
      handle: handle,
-     email: email,
-     password: password,
+     
      status: status,
      target: target,
      deceased: deceased
    }, function(err, player){
      if(err){
-       res.send("houston we have a problem")
+       res.redirect("/completeProfile")
+
      } else{
        console.log("New Agent named " + player + "created!");
-       res.send(player);
+       res.redirect('/profile');
        
      }
    });
@@ -65,8 +64,7 @@ router.route('/')
    .put(function(req, res) {
 
             var handle = req.body.handle;
-            var email= req.body.email;
-            var password = req.body.password;
+          
             var status = req.body.status;
             var target = req.body.target;
             var deceased = req.body.deceased;

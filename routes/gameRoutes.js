@@ -14,33 +14,32 @@ router.route('/')
      if(err){
        return console.log(err);
      } else {
-      res.send(games)
+      res.redirect('/profile');
      }
    });
  })
 
 
  .post(function(req, res){
-        var name = req.body.name;
+        var gameName = req.body.gameName;
         var moderator= req.body.moderator;
-        var start= req.body.start;
-        var end= req.body.end;
-        var arena= req.body.arena;
-        var prize= req.body.prize;
+        var startTime= req.body.startTime;
+        var endTime= req.body.endTime;
+        var location= req.body.location;
 
    mongoose.model('Game').create({
-     name: name,
+     gameName: gameName,
      moderator: moderator,
-     start: start,
-     end: end,
-     arena: arena,
-     prize: prize
+     startTime: startTime,
+     endTime: endTime,
+     location: location,
+     
    }, function(err, game){
      if(err){
        res.send("houston we have a problem")
      } else{
-       console.log("New Game " + game.name + " created!");
-       res.send(game);
+      console.log("New game named " + gameName + "created!");
+      res.redirect('/profile');
        
      }
    });
@@ -64,12 +63,11 @@ router.route('/')
    
    .put(function(req, res) {
 
-        var name = req.body.name;
+        var gameName = req.body.gameName;
         var moderator=req.body.moderator;
-        var start=req.body.start;
-        var end=req.body.end;
-        var arena=req.body.arena;
-        var prize=req.body.prize;
+        var startTime=req.body.startTime;
+        var endTime=req.body.endTime;
+        var location=req.body.location;
 
        mongoose.model('Game').findById({
            _id: req.params.id
@@ -79,12 +77,11 @@ router.route('/')
            if (err)
                res.send(err);
               
-            game.name = name;
+            game.gameName = gameName;
             game.moderator= moderator;
-            game.start= start;
-            game.end= end;
-            game.arena= arena;
-            game.prize= prize;
+            game.startTime= startTime;
+            game.endTime= endTime;
+            game.location= location;
 
            game.save();
            res.json(game);

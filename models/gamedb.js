@@ -3,12 +3,12 @@ var mongoose = require('mongoose');
 var gameSchema = new mongoose.Schema({
 
     
-        name: String,
+        gameName: String,
         moderator: String,
-        start: String,
-        end:String,
-        arena: String,
-        prize: String
+        startTime: String,
+        endTime: String,
+        location: String
+    
 })
 
 module.exports = mongoose.model('Game', gameSchema);
