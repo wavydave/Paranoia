@@ -7,42 +7,44 @@
 </head>
 <body>
 	<div>
-		<form>
-			<form action="submit" method="POST" role="form">
+		
+			<form action="/api/gameRoutes" method="post" role="form">
 				<legend>Create Your Game</legend>
 			
 				<div class="form-group">
-					<label for="">label</label>
-					<input type="text" class="form-control" id="gameName" placeholder="Name your hunt">
+					<label for="">You</label>
+					<input type="text" class="form-control" name="moderator" placeholder="">
+				</div>
+				<div class="form-group">
+					<label for="">Name</label>
+					<input type="text" class="form-control" name="gameName" placeholder="Name your hunt">
 				</div>
 
 				<div class="form-group">
 					<label for="">Starting Date And Time</label>
-					<input type="text" class="form-control" id="startTime" placeholder="When will the game begin?">
+					<input type="text" class="form-control" name="startTime" placeholder="When will the game begin?">
 				</div>
 
 				<div class="form-group">
 					<label for="">Ending Date And Time</label>
-					<input type="text" class="form-control" id="endTime" placeholder="When does the game end?">
+					<input type="text" class="form-control" name="endTime" placeholder="When does the game end?">
+				</div>
+				<div class="form-group">
+					<label for="">Location</label>
+					<input type="text" class="form-control" name="location" placeholder="Where are you playing?">
 				</div>
 			
 				
 			
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
-		</form>
+		
 
 
 	</div>
 
-	<div>
-		CHOOSE AN ARENA for react component of active players
-	</div>
-
-	<div>
-		PLACEHOLER for react component of active players
-	</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>	
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/app.js"></script>
+
 </body>
 </html>

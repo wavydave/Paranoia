@@ -20,6 +20,11 @@ module.exports = function(app, passport) {
             user : req.user
         });
     });
+    app.get('/createGame', isLoggedIn, function(req, res) {
+        res.render('createGame.ejs', {
+            user : req.user
+        });
+    });
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
         req.logout();
