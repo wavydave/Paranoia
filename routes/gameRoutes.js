@@ -26,6 +26,7 @@ router.route('/')
         var startTime= req.body.startTime;
         var endTime= req.body.endTime;
         var location= req.body.location;
+        var players= req.body.players;
 
    mongoose.model('Game').create({
      gameName: gameName,
@@ -33,6 +34,7 @@ router.route('/')
      startTime: startTime,
      endTime: endTime,
      location: location,
+     players: players
      
    }, function(err, game){
      if(err){
@@ -68,6 +70,7 @@ router.route('/')
         var startTime=req.body.startTime;
         var endTime=req.body.endTime;
         var location=req.body.location;
+        var players=req.body.players;
 
        mongoose.model('Game').findById({
            _id: req.params.id
@@ -82,6 +85,7 @@ router.route('/')
             game.startTime= startTime;
             game.endTime= endTime;
             game.location= location;
+            game.players= players;
 
            game.save();
            res.json(game);

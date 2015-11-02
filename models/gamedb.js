@@ -7,7 +7,8 @@ var gameSchema = new mongoose.Schema({
         moderator: String,
         startTime: String,
         endTime: String,
-        location: String
+        location: String,
+        players: Array
     
 })
 
