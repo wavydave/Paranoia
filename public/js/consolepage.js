@@ -17,12 +17,12 @@ var sendToServer = function(term) {
 
 
         if(data != null){
-            term.echo('Success! Welcome home, agent.');
+            term.echo('Success! Welcome home, Agent.');
         } else {
             term.echo(email + " Didn't work!");
         }
     }).fail(function(res){
-        term.echo(command + "Sorry. Our super-secret servers are currently down. As far as you know...");
+        term.echo(command + "Sorry. Our super-secret servers are currently down.");
     });
     
 };
@@ -35,18 +35,18 @@ var loginServer = function(term) {
     .done(function (data){
 
         if(data != null){
-            term.echo('Success! Welcome home, agent.');
+            term.echo('Success! Welcome home, Agent.');
         } else {
             term.echo(email + " Didn't work!");
         }
     }).fail(function(res){
-        term.echo(command + "Sorry. Our super-secret servers are currently down. As far as you know...");
+        term.echo(command + "Sorry. Our super-secret servers are currently down.");
     });
     
 };
 
 var help = function(term) {
-    term.echo("available commands are rules, game, profile, login, signout");
+    term.echo("Available commands are rules, game, profile, login, signout");
 };
 
 var profile = function(term) {
@@ -56,20 +56,22 @@ var profile = function(term) {
     });
 }
 var rules = function(term) {
-    term.echo('Goal: Be the last one standing. How to play:  ' + 
-        'Each assassin’s job is to stay shrouded in secrecy.  Therefore, all kills must be accomplished without anyone else seeing.' +
-        'This rule is important, as you will not know who else may be playing. '+
-        'You must eliminate this person while keeping your own identity concealed. ' +   
-        'When you eliminate a player:  Upon eliminating your target, the target should give you ' +
-        'their badge number and the information about the target they were assigned. ' +
+    term.echo('Goal: Be the last agent standing.                                                  ' + '                                                                                         ' +
+        'How to play:  ' + 
+        'Each agent will be assigned one target to eliminate, and each agent     ' + 
+        'will in turn be pursued by another player. As no one knows who else may be playing,   '+ 
+        'secrecy and stealth are paramount. To maintain a low profile, be discreet when        ' + 
+        'eliminating your target.                                                                ' +  
+        'When you eliminate a target:  Once, eliminated your target should give you ' +
+        'their badge number and the information about the target they were assigned to eliminate. ' +
         'This person is now your target.  As soon as possible, email the moderator so the leaderboard can be updated. ' +
-        'If you are eliminated:  Give your target to your killer.  Contact the moderator immediately so the leader board can be updated. ' +
-        'Winner takes all:  The last agent standing will receive... ' +
-        'Rules: No weapons of any kind are allowed. Players are eliminated by touching the target with  your fingers. ' +
+        'If you are eliminated:  Give your target to the agent who eliminated you.  Contact the moderator immediately so the leader board can be updated. ' +
+        'Winner takes all:  The last agent standing will receive kudos from the Paranoia community! ' +
+        'Rules: 1. No weapons of any kind are allowed. Players are eliminated by touching the target with fingers. 2. To maintain your cover, all eliminations must be covert.' +
         'You may not enter a person’s dorm room uninvited.  All areas of campus are fair game except the following: ' +
         'Classrooms.          Bathrooms.        The library. ' +
         'A player’s place of employment.        Vehicles, whether moving or parked. ' +
-        'Keep in mind this is a game that rewards sneakiness and vigilance. Keep your identity concealed.  Play fair, don’t cheat. (In other words, don’t be “That Guy”.)  HAVE FUN!!');
+        'Keep in mind this is a game that rewards sneakiness and vigilance. Keep your identity concealed.  Play fair; don’t cheat. (In other words, don’t be “that guy”.)  Above all, HAVE FUN!!');
 }
 
 var signup = function(term) {
