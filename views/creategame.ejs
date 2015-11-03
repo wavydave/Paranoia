@@ -11,10 +11,30 @@
 			<form action="/api/gameRoutes" method="post" role="form">
 				<legend>Create Your Game</legend>
 			
-				<div class="form-group">
-					<label for="">Your Handle</label>
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">Your Handle</span>
+					<!-- <label for="">Your Handle</label> -->
 					<input type="text" class="form-control" name="moderator" placeholder="">
 				</div>
+
+
+				
+
+				<input id="submit" onclick="getNumber()" type="submit" value="add player" />
+				
+				</select>
+				<label for="guys">Guys</label>
+				<select id="guys" name="guys">
+					<option>Please choose a player</option>
+				</select>
+
+				<ul id="selectedPlayers">
+				</ul>
+				
+
+				<!-- <input id="submit" type="submit" value="submit" /> -->
+				
+
 				<div class="form-group">
 					<label for="">Name</label>
 					<input type="text" class="form-control" name="gameName" placeholder="Name your game">
