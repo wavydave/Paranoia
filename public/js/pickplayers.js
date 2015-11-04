@@ -9,7 +9,7 @@ var playerGetter = function () {
 
 	$.getJSON( "http://localhost:7000/api/playerRoutes", function( data ) {
 		
-		var players = '<option>Choose a guy for your game</option>';
+		var players = '<option>Choose a player for your game</option>';
 
 		for (var i = 0; i < data.length; i++) {
 			players += '<option value="' + data[i].handle + '">' + data[i].handle + '</option>';
