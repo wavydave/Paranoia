@@ -8,7 +8,8 @@ var playerSchema = new mongoose.Schema({
         password: String,
         status: Boolean,
         deceased: Boolean,
-        target: String
+        target: String,
+        pic: String
 
     
 });

@@ -49,7 +49,7 @@ router.route('/')
       res.app.game = game;
       // res.redirect('/completeGame');
       
-      res.render('completeGame.ejs', {game: game});
+      res.render('completeGame.ejs', {game : game});
        
      }
    });

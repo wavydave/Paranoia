@@ -11,20 +11,39 @@
 			
 			<strong>Game Name</strong>: <%= game.gameName %><br>
 				
-			
-			
-			</select>
-			<label for="guys">Guys</label>
-			<select id="guys" name="guys">
-			<option>Please choose a player</option>
-			</select>
-			
 
-			<input id="submit" onclick="getNumber()" type="submit" value="Add player" />
+			<form action=<%= "/api/gamePlayer/" + game._id %> method="POST">
+			<div id="playerList">
+					
+				</div>
+
+				<label for="players">Guys</label>
+				<select id="players" name="players">
+					<option>Please choose a player</option>
+				</select>
+
+				<div>
+					<h2>Players added to Game</h2>
+					<ul  id="selectedPlayers">
+						<% if (game.players) {
+							game.players.forEach(function(player) { %>
+							<li><%= player %></li><a>remove player</a>
+						<%})}%>
+					</ul>
+				<div>
+			
+				
+			
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+
+
 		
 	</div>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>	
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./public/js/pickplayers.js"></script>
 
 </body>
 </html>
