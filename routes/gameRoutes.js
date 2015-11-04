@@ -3,47 +3,59 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }))
+var homecontrol = function(req, res){
+  var context =  req.game;
+  console.log("In homecontrol ", game.gameName);
+  res.render('completeGame.ejs', context);
+}
+
+
+
+var Game = require('../models/gamedb');
 
 
 // /api/gameRoutes/
 router.route('/')
 
 /* GET All Blogs */
- .get(function(req, res) {
+.get(function(req, res) {
    mongoose.model('Game').find({}, function(err, games){
      if(err){
        return console.log(err);
      } else {
-      res.redirect('/profile');
+      res.json(games);
      }
    });
  })
 
 
- .post(function(req, res){
-        var gameName = req.body.gameName;
-        var moderator= req.body.moderator;
-        var startTime= req.body.startTime;
-        var endTime= req.body.endTime;
-        var location= req.body.location;
+.post(function(req, res, next){
+        
 
-   mongoose.model('Game').create({
-     gameName: gameName,
-     moderator: moderator,
-     startTime: startTime,
-     endTime: endTime,
-     location: location,
-     
-   }, function(err, game){
+  var game =  new Game();
+    
+  game.gameName = req.body.gameName;
+  game.moderator= req.body.moderator;
+  game.startTime= req.body.startTime;
+  game.endTime= req.body.endTime;
+  game.location= req.body.location;
+  game.players= req.body.players;
+
+  game.save( function(err) {
      if(err){
        res.send("houston we have a problem")
      } else{
-      console.log("New game named " + gameName + "created!");
-      res.redirect('/profile');
+      console.log("New game named " + game.gameName + " created!");
+      res.app.game = game;
+      // res.redirect('/completeGame');
+      
+      res.render('completeGame.ejs', {game : game});
        
      }
    });
  });
+     
+   
 
 
  router.route('/:id')
@@ -68,6 +80,7 @@ router.route('/')
         var startTime=req.body.startTime;
         var endTime=req.body.endTime;
         var location=req.body.location;
+        var players=req.body.players;
 
        mongoose.model('Game').findById({
            _id: req.params.id
@@ -82,6 +95,7 @@ router.route('/')
             game.startTime= startTime;
             game.endTime= endTime;
             game.location= location;
+            game.players= players;
 
            game.save();
            res.json(game);

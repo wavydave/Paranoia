@@ -19,7 +19,9 @@ var gameModel = require('./models/gamedb');
 var userModel = require('./models/user');
 var playerRoutes = require('./routes/playerRoutes');
 var gameRoutes = require('./routes/gameRoutes');
-var newRoutes = require('./routes/newRoutes');
+var gamePlayer = require('./routes/gamePlayer');
+
+
 
 
 // mongoose.connect('mongodb://localhost/paranoiaPlayerdb');
@@ -43,6 +45,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./routes/userRoutes.js')(app, passport);
 
 
+
 app.set('port', (process.env.PORT || 7000));
 
 app.use('/api', router);
@@ -51,7 +54,12 @@ app.use('/api/playerRoutes', playerRoutes);
 
 app.use('/api/gameRoutes', gameRoutes);
 
-// app.use('/api/players', newRoutes);
+app.use('/api/gamePlayer', gamePlayer);
+
+
+
+
+
 
 
 

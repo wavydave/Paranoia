@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }))
 
+
+
 //url/api/blogs
 // /api/playerRoutes/
 router.route('/')
@@ -26,13 +28,15 @@ router.route('/')
    var status = req.body.status;
    var target = req.body.target;
    var deceased = req.body.deceased;
+   var pic = req.body.pic;
 
    mongoose.model('Player').create({
      handle: handle,
-     
+     pic: pic,
      status: status,
      target: target,
      deceased: deceased
+
    }, function(err, player){
      if(err){
        res.redirect("/completeProfile")
@@ -64,7 +68,7 @@ router.route('/')
    .put(function(req, res) {
 
             var handle = req.body.handle;
-          
+            var pic = req.body.pic;
             var status = req.body.status;
             var target = req.body.target;
             var deceased = req.body.deceased;
@@ -83,6 +87,7 @@ router.route('/')
             player.status = status;
             player.target = target;
             player.deceased = deceased;
+            player.pic = pic;
 
            player.save();
            res.json(player);
