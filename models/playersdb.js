@@ -11,6 +11,7 @@ var playerSchema = new mongoose.Schema({
         target: String,
         pic: String
 
+
     
 });
 
