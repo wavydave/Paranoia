@@ -37,10 +37,10 @@ $('#players').on('change', function(event) {
 	
 
 	$.ajax({
-		url: '/api/gamePlayer/',
+		url: 'http://localhost:7000/api/gamePlayer/563a3b2ffe4ed89e8f48f2e1',
 		type: 'PUT',
 		dataType: 'json',
-		data: runningList,
+		data: player,
 		success: function(result) {
     
         	console.log('it works');
