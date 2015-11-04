@@ -19,8 +19,10 @@ var gameModel = require('./models/gamedb');
 var userModel = require('./models/user');
 var playerRoutes = require('./routes/playerRoutes');
 var gameRoutes = require('./routes/gameRoutes');
-var newRoutes = require('./routes/newRoutes');
 var gamePlayer = require('./routes/gamePlayer');
+
+
+
 
 
 // mongoose.connect('mongodb://localhost/paranoiaPlayerdb');
@@ -54,7 +56,7 @@ app.use('/api/gameRoutes', gameRoutes);
 
 app.use('/api/gamePlayer', gamePlayer);
 
-// app.use('/api/players', newRoutes);
+
 
 
 

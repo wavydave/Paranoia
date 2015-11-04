@@ -20,16 +20,12 @@ module.exports = function(app, passport) {
             user : req.user
         });
     });
-    app.get('/completeGame', isLoggedIn, function(req, res) {
-        res.render('completeGame.ejs', {
-            user : req.user
-        });
-    });
     app.get('/createGame', isLoggedIn, function(req, res) {
         res.render('createGame.ejs', {
             user : req.user
         });
     });
+    
     app.get('/gameProfile', isLoggedIn, function(req, res) {
         res.render('gameProfile.ejs', {
             user : req.user

@@ -24,7 +24,7 @@ router.use(bodyParser.urlencoded({ extended: true }))
    
    .put(function(req, res) {
 
-       var player=req.body.player;
+       var player = req.body.player;
 
 
        mongoose.model('Game').findById({
@@ -43,7 +43,7 @@ router.use(bodyParser.urlencoded({ extended: true }))
    
 
    .delete(function(req, res) {
-   	var player=req.body.player;
+   	var player = req.body.player;
    	mongoose.model('Game').findById({
    		_id: req.params.id
    	}, function(err, game) {

@@ -1,26 +1,4 @@
-// (function(){
-// $.getJSON( "http://localhost:7000/api/playerRoutes", function( data ) {
-// var items = [];
-// $.each( data, function(key, val ){
-// 	items.push("<li><a>" + val.handle + "</a></li>");
-// });
 
-// // var HandleArray = [];
-
-// //  for (var i = 0; i < data.length; i++) {
-// //  	HandleArray.push(data[i].handle)
-// //  };
-// //  console.log(HandleArray);
-// //  document.getElementById("playerList").innerHTML = HandleArray;
- 
-
-//  $("<ul/>", {
-//  	"class": "players",
-//  	html: items.join("")
-// 	}).appendTo("#playerList");
-
-// });
-// })();
 var activeArray = [];
 var allPlayers = [];
 var playersInGame = [];
@@ -45,51 +23,32 @@ var playerGetter = function () {
 
 playerGetter();
 
+
 $('#players').on('change', function(event) {
 	var printOut = document.getElementById('selectedPlayers');
 	activeArray.push(event.target.value);
 	var active = activeArray.map(function(e){
-		var selected = '<li>' + e + '</li>';
+		var selected = '<li>' + e + '</li>  <a>remove player</a>';
 		return selected;
 	})
 
 	var runningList = active.join('');
 	printOut.innerHTML = runningList;
-
+	
 
 	$.ajax({
-		url: 'http://localhost:7000/api/gameRoutes/',
+		url: '/api/gamePlayer/',
 		type: 'PUT',
 		dataType: 'json',
 		data: runningList,
 		success: function(result) {
-       
+    
         	console.log('it works');
     }
 });
 
 
 });
-
-// $('#gameForm').on('submit', function(event) {
-// 	var data = {
-//         gameName: event.target.gameName, 
-//         moderator: event.target.moderator,
-//         startTime: event.target.startTime,
-//         endTime: event.target.endTime,
-//         location: event.target.location,
-//         players: event.target.players
-//     };
-
-
-
-// var playerPicker = function(event){
-// 	console.log(event.value);
-// };
-
-
-	
-	
 
 
 
