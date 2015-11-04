@@ -10,6 +10,7 @@ var playerSchema = new mongoose.Schema({
         deceased: Boolean,
         target: String
 
+
     
 });
 

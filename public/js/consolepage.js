@@ -60,7 +60,7 @@ var rules = function(term) {
         'community!                                                                                                                                                                                               ' +
         'How to play: Each agent will be assigned one target to eliminate, and each agent will in turn be    ' + 
         'pursued by another player. As no one knows who else may be playing, secrecy and stealth are         '+ 
-        'paramount. To maintain a low profile, be discreet when eliminating your target.                                                                                                                         ' +  
+        'paramount. To maintain a low profile, be discreet when eliminating your target. All games begin   ' + '  and end at midnight.                                                                                                                                                                                    ' +  
         'Eliminations:  When you eliminate an agent they will give their target to you. This person is       ' + 
         'your new target. Both players will immediately email the moderator so the leaderboard can be        ' + 
         'updated. Follow the same proceedure if you are eliminated.                                                                                                                                              ' +
