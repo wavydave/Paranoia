@@ -17,12 +17,12 @@ var sendToServer = function(term) {
 
 
         if(data != null){
-            term.echo('Success! Welcome home, agent.');
+            term.echo('Success! Welcome home, Agent.');
         } else {
-            term.echo(email + " Didn't work!");
+            term.echo(email + "Didn't work!");
         }
     }).fail(function(res){
-        term.echo(command + "Sorry. Our super-secret servers are currently down. As far as you know...");
+        term.echo(command + "Sorry. Our super-secret servers are currently down.");
     });
     
 };
@@ -35,18 +35,18 @@ var loginServer = function(term) {
     .done(function (data){
 
         if(data != null){
-            term.echo('Success! Welcome home, agent.');
+            term.echo('Success! Welcome home, Agent.');
         } else {
-            term.echo(email + " Didn't work!");
+            term.echo(email + "Didn't work!");
         }
     }).fail(function(res){
-        term.echo(command + "Sorry. Our super-secret servers are currently down. As far as you know...");
+        term.echo(command + "Sorry. Our super-secret servers are currently down.");
     });
     
 };
 
 var help = function(term) {
-    term.echo("available commands are rules, game, profile, login, signout");
+    term.echo("Available commands are rules, profile, login, signup");
 };
 
 var profile = function(term) {
@@ -56,20 +56,20 @@ var profile = function(term) {
     });
 }
 var rules = function(term) {
-    term.echo('Goal: Be the last one standing. How to play:  ' + 
-        'Each assassin’s job is to stay shrouded in secrecy.  Therefore, all kills must be accomplished without anyone else seeing.' +
-        'This rule is important, as you will not know who else may be playing. '+
-        'You must eliminate this person while keeping your own identity concealed. ' +   
-        'When you eliminate a player:  Upon eliminating your target, the target should give you ' +
-        'their badge number and the information about the target they were assigned. ' +
-        'This person is now your target.  As soon as possible, email the moderator so the leaderboard can be updated. ' +
-        'If you are eliminated:  Give your target to your killer.  Contact the moderator immediately so the leader board can be updated. ' +
-        'Winner takes all:  The last agent standing will receive... ' +
-        'Rules: No weapons of any kind are allowed. Players are eliminated by touching the target with  your fingers. ' +
-        'You may not enter a person’s dorm room uninvited.  All areas of campus are fair game except the following: ' +
-        'Classrooms.          Bathrooms.        The library. ' +
-        'A player’s place of employment.        Vehicles, whether moving or parked. ' +
-        'Keep in mind this is a game that rewards sneakiness and vigilance. Keep your identity concealed.  Play fair, don’t cheat. (In other words, don’t be “That Guy”.)  HAVE FUN!!');
+    term.echo('Goal: Be the last agent standing. The winner gets full bragging rights within the Paranoia         ' +
+        'community!                                                                                                                                                                                               ' +
+        'How to play: Each agent will be assigned one target to eliminate, and each agent will in turn be    ' + 
+        'pursued by another player. As no one knows who else may be playing, secrecy and stealth are         '+ 
+        'paramount. To maintain a low profile, be discreet when eliminating your target.                                                                                                                         ' +  
+        'Eliminations:  When you eliminate an agent they will give their target to you. This person is       ' + 
+        'your new target. Both players will immediately email the moderator so the leaderboard can be        ' + 
+        'updated. Follow the same proceedure if you are eliminated.                                                                                                                                              ' +
+        'Rules: No weapons of any kind are allowed. Players are eliminated by touching with fingers.         ' + 
+        'To maintain your cover, all eliminations must be covert. You may not enter a dorm room uninvited.   ' + 
+        'All areas of campus are fair game except the following: classrooms, the library, a ' +
+        'player’s place   of employment, and vehicles.                                                                                                                                                                            ' +
+        'Keep in mind this is a game that rewards sneakiness and vigilance. Keep your identity concealed.    ' + 
+        'Play fair; don’t cheat. Above all, HAVE FUN!!');
 }
 
 var signup = function(term) {
@@ -77,19 +77,19 @@ var signup = function(term) {
     savedPassword = null;
     savedHandle = null;
     inSignUp = true;
-    term.set_prompt('Assassin login: Enter your top-secret email address: ')
+    term.set_prompt('Agent login: Enter your top-secret email address: ')
 }
 
 var login = function(term) {
     savedHandle = null;
     savedPassword = null;
     inLogin = true;
-    term.set_prompt('Assassin login: Enter your handle: ') 
+    term.set_prompt('Agent login: Enter your handle: ') 
 }
 
 var loginPasswordCheck = function(term) {
     
-    term.set_prompt('Assassin login: Enter your top-secret password: ');
+    term.set_prompt('Agent login: Enter your top-secret password: ');
     loginServer(term);
     term.set_prompt('~$');
     term.echo('Welcome back, Agent ' + savedHandle + '.');
@@ -104,10 +104,10 @@ jQuery(document).ready(function($) {
     $('#console').terminal(function(command, term) {
         if (inSignUp && savedEmail === null) {
             savedEmail = command;
-            term.set_prompt('Assassin login: Enter your top-secret password: ');
+            term.set_prompt('Agent login: Enter your top-secret password: ');
         } else if (inSignUp && savedPassword === null) {
             savedPassword = command;
-            term.set_prompt('Assassin login: Enter your top-secret handle: ');
+            term.set_prompt('Agent login: Enter your top-secret handle: ');
 
         } else if (inSignUp && savedHandle === null) { 
             savedHandle = command;
@@ -118,17 +118,17 @@ jQuery(document).ready(function($) {
             term.echo('');
             term.echo('');
             term.echo('');
-            term.echo('You have been assigned to eliminate.......Cobra');
-            term.echo('Arena.....................................UM Campus');
-            term.echo('Time remaining in game....................3 days');
-            term.echo('Surviving players.........................2 / 30');
+            term.echo('Your target is: Cobra');
+            term.echo('Game location: UM Campus');
+            term.echo('Time remaining in game: 3 days');
+            term.echo('Surviving players: 2 / 30');
 
         } else if (inLogin && savedHandle === null) {
             loginHandleCheck(); 
         } else if (inLogin && savedPassword === null) {
-            term.set_prompt('Assassin login: Enter your top-secret password: ');
+            term.set_prompt('Agent login: Enter your top-secret password: ');
             savedPassword = command;
-            term.set_prompt('Assassin login: Enter your top-secret password: ');
+            term.set_prompt('Agent login: Enter your top-secret password: ');
             loginServer(term);
             term.set_prompt('~$');
             term.echo('Welcome back, Agent ' + savedHandle + '.');
